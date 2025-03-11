@@ -1,0 +1,61 @@
+.cliente-card {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cliente-nombre {
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  font-size: 24px;
+}
+
+.cliente-divider {
+  margin: 16px 0;
+  background-color: #ddd;
+}
+
+.cliente-info {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cliente-label {
+  font-weight: bold;
+  color: #666;
+  font-size: 14px;
+}
+
+.cliente-valor {
+  color: #333;
+  font-size: 16px;
+}
+
+.cliente-obras-titulo {
+  margin-top: 24px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.cliente-tabla-container {
+  border-radius: 6px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 16px;
+}
+
+.cliente-tabla-header {
+  font-weight: bold;
+  background-color: #eee;
+}
+
+.cliente-tabla-dato {
+  text-align: center;
+}

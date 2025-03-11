@@ -1,0 +1,18 @@
+.responsive-grid {
+    overflow-x: auto;
+  }
+  
+  .grid-header,
+  .grid-cell {
+    min-width: 120px; /* Ajusta este valor según tus necesidades */
+    word-wrap: break-word;
+  }
+  
+  @media (max-width: 600px) {
+    .grid-header,
+    .grid-cell {
+      font-size: 0.75rem;
+      padding: 4px !important;
+    }
+  }
+  

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --header-height: 70px;
+  --drawer-width: 220px;
+  --body-padding: 20px;
+  --header-fade-opacity: 1;
+  /* Valor inicial */
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+}
+
+/* Contenedor principal: organiza Header y Main Content */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Main Content: contenedor para Drawer y Body */
+.main-content {
+  display: flex;
+  flex: 1;
+  
+  margin-top: var(--header-height);
+  overflow: hidden;
+  /* Evita scrolls inesperados */
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* Ajusta según la altura real de tu header */
+  z-index: 200; /* Asegurar que esté sobre todo */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.drawer {
+  width: var(--drawer-width);
+  height: calc(100vh - var(--header-height)); /* Para que no tape el Header */
+  position: fixed;
+  top: var(--header-height); /* Comienza justo debajo del Header */
+  left: 0;
+  z-index: 150;
+   max-height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+}
+
+/* Body Content: contenedor donde se renderiza el contenido dinámico */
+.body-content {
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 100%; /* Permitir que ocupe todo el ancho */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Contenedor interno: limita el ancho y centra el contenido */
+.inner-content {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  max-width: 1000px;
+  margin: 0 auto; /* Centra horizontalmente el contenido */
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+    /* Altura reducida para mobile */
+    --drawer-width: 100%;
+    /* El Drawer ocupará todo el ancho */
+    --body-padding: 10px;
+  }
+
+  /* Se apilan verticalmente el Drawer y el Body */
+  .main-content {
+    flex-direction: column;
+    margin-top: var(--header-height);
+  }
+
+  /* Body Content en mobile: ocupa el 100% del ancho sin margen lateral */
+  .body-content {
+    margin-left: 0;
+    padding: var(--body-padding);
+    -webkit-mask-image: none;
+    mask-image: none;
+    width: 100%;
+  }
+
+  .inner-content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .drawer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  
+}

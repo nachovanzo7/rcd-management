@@ -1,0 +1,47 @@
+.page-container {
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .section-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 2px solid gray;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .table-checkbox {
+    transform: scale(1.2);
+  }
+  
+  .input-field {
+    margin-top: 15px;
+  }
+  

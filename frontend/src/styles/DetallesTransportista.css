@@ -1,0 +1,49 @@
+
+.transportista-card {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transportista-nombre {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .transportista-divider {
+    margin: 20px 0;
+    background-color: #ecf0f1;
+  }
+  
+  .transportista-info {
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .transportista-label {
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  .transportista-valor {
+    color: #7f8c8d;
+    margin-top: 5px;
+  }
+  
+  .transportista-tabla-container {
+    margin-top: 20px;
+  }
+  
+  .transportista-tabla-header {
+    font-weight: bold;
+    background-color: #34495e;
+    color: white;
+  }
+  
+  .transportista-tabla-dato {
+    color: #2c3e50;
+  }
+  

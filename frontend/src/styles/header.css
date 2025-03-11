@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+  --header-height: 80px;
+  --logo-width: 100px;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100vw;
+  height: var(--header-height);
+  background-color: #999999;
+  padding: 17px;
+  box-sizing: border-box;
+  z-index: 100;
+  transition: opacity 0.3s ease;
+  overflow-x: hidden; 
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-placeholder {
+  width: var(--logo-width);
+}
+
+.site-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+}
+
+.header-logo {
+  width: var(--logo-width);
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.header-back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px; 
+  display: flex;
+  align-items: center;
+  max-width: 40px;
+}
+
+/* Alineación del ícono de la flecha */
+.header-back-button svg {
+  color: #fff;
+  font-size: 30px; /* Ajusta el tamaño de la flecha */
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 10px;
+  }
+
+  /* Se oculta el título */
+  .site-title {
+    display: none;
+  }
+
+  /* Se oculta el botón de regreso, si no se requiere en móvil */
+  .header-back-button {
+    display: none;
+  }
+
+  /* Se centra el logo */
+  .header-container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

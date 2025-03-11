@@ -1,0 +1,51 @@
+Wrapper que centra la tabla en la pantalla
+.table-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;     
+  padding: 10px;      
+  box-sizing: border-box;
+}
+
+/* Contenedor principal de la tabla */
+.table-container {
+  width: 100%;
+  max-width: 1100px;
+  height: 600px;
+  overflow-x: auto;         /* Permite scroll horizontal cuando sea necesario */
+  margin: 0 auto;           /* Centrado horizontal */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Estilos para una tabla en pantalla completa */
+.fullscreen-table {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para las celdas de acción */
+.view-cell,
+.edit-cell,
+.delete-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Usa toda la altura de la fila */
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
+  .table-container {
+    width: 100%;
+    height: auto;        /* Permite que la altura se ajuste según el contenido */
+    overflow-x: auto;    /* Se mantiene el scroll horizontal */
+    padding: 5px;
+  }
+  
+  /* Si usas MUI DataGrid, forzamos un ancho mínimo para que se active el scroll horizontal */
+  .MuiDataGrid-root {
+    min-width: 600px;    /* Ajusta este valor según el contenido de tus columnas */
+  }
+}

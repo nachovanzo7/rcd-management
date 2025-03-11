@@ -1,0 +1,46 @@
+
+.obra-card {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .obra-nombre {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .obra-divider {
+    margin: 20px 0;
+    background-color: #ecf0f1;
+  }
+  
+  .obra-info {
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .obra-label {
+    font-weight: bold;
+    color: #34495e;
+  }
+  
+  .obra-valor {
+    color: #7f8c8d;
+    margin-top: 5px;
+  }
+  
+  .obra-imagen {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .obra-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
