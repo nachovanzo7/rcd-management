@@ -23,24 +23,25 @@ const Solicitudes = () => {
   };
 
   const tokenLocal = sessionStorage.getItem('token');
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     if (!token) return;
 
     Promise.all([
-      fetch('http://127.0.0.1:8000/api/clientes/solicitudes/', {
+      fetch(`${API_URL}/api/clientes/solicitudes/`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Token ${token}`,
         },
       }).then((res) => res.json()),
-      fetch('http://127.0.0.1:8000/api/obras/solicitudes/', {
+      fetch(`${API_URL}/api/obras/solicitudes/`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Token ${token}`,
         },
       }).then((res) => res.json()),
-      fetch('http://127.0.0.1:8000/api/coordinacionretiro/lista/', {
+      fetch(`${API_URL}/api/coordinacionretiro/lista/`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Token ${token}`,
@@ -157,13 +158,13 @@ const Solicitudes = () => {
     let url = "";
     if (solicitud.tipo === "cliente") {
       const clientId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/clientes/solicitudes/${clientId}/rechazar/`;
+      url = `${API_URL}/api/clientes/solicitudes/${clientId}/rechazar/`;
     } else if (solicitud.tipo === "obra") {
       const obraId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/obras/solicitudes/${obraId}/rechazar/`;
+      url = `${API_URL}/api/obras/solicitudes/${obraId}/rechazar/`;
     } else if (solicitud.tipo === "coordinacion") {
       const coordId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/coordinacionretiro/solicitudes/${coordId}/rechazar/`;
+      url = `${API_URL}/api/coordinacionretiro/solicitudes/${coordId}/rechazar/`;
     }
 
     fetch(url, {
@@ -204,13 +205,13 @@ const Solicitudes = () => {
     let url = "";
     if (solicitud.tipo === "cliente") {
       const clientId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/clientes/solicitudes/${clientId}/terminar/`;
+      url = `${API_URL}/api/clientes/solicitudes/${clientId}/terminar/`;
     } else if (solicitud.tipo === "obra") {
       const obraId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/obras/solicitudes/${obraId}/terminar/`;
+      url = `${API_URL}/api/obras/solicitudes/${obraId}/terminar/`;
     } else if (solicitud.tipo === "coordinacion") {
       const coordId = id.split('-')[1];
-      url = `http://127.0.0.1:8000/api/coordinacionretiro/${coordId}/terminar/`;
+      url = `${API_URL}/api/coordinacionretiro/${coordId}/terminar/`;
     }
     
     fetch(url, {

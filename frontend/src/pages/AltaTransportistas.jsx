@@ -105,12 +105,15 @@ const AltaTransportistas = () => {
       estado: 'activo',
     };
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+
     try {
       if (!token) {
         throw new Error('Token no disponible, redirigiendo a login');
       }
 
-      const response = await fetch('http://127.0.0.1:8000/api/transportistas/registro/', {
+      const response = await fetch(`${API_URL}/api/transportistas/registro/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

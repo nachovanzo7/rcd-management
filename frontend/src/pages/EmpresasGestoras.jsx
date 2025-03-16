@@ -17,10 +17,11 @@ const EmpresasGestoras = () => {
   const [selectedEmpresa, setSelectedEmpresa] = useState(null);
   const { token } = useContext(AuthContext);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     if (!token) return;
-    fetch('http://127.0.0.1:8000/api/empresas/lista/', {
+    fetch(`${API_URL}/api/empresas/lista/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ const EmpresasGestoras = () => {
     const confirmacion = window.confirm("¿Seguro que deseas eliminar esta empresa?");
     if (confirmacion) {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/empresas/eliminar/${id}/`, {
+        const response = await fetch(`${API_URL}/api/empresas/eliminar/${id}/`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

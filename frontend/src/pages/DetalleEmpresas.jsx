@@ -34,6 +34,8 @@ const DetallesEmpresaGestora = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError("ID de empresa gestora no proporcionado.");
@@ -41,7 +43,7 @@ const DetallesEmpresaGestora = () => {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/empresas/${id}/`, {
+    fetch(`${API_URL}/api/empresas/${id}/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,

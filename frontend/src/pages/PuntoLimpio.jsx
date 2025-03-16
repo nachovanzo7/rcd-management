@@ -16,15 +16,16 @@ const PuntoLimpio = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const { token, role } = useContext(AuthContext);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     if (!token) return; 
 
     // Por defecto se usa el endpoint de puntos limpios general
-    let url = "http://localhost:8000/api/puntolimpio/lista/";
+    let url = `${API_URL}/api/puntolimpio/lista/`;
     // Si el usuario logueado tiene rol "cliente", usamos el endpoint que filtra por el cliente
     if (role === "cliente") {
-      url = "http://localhost:8000/api/clientes/puntos-limpios/";
+      url = `${API_URL}/api/clientes/puntos-limpios/`;
     }
     console.log("Fetching puntos limpios desde:", url);
 
@@ -52,7 +53,7 @@ const PuntoLimpio = () => {
     if (!punto) return;
     const newEstado = punto.estado.trim().toLowerCase() === "activo" ? "inactivo" : "activo";
 
-    fetch(`http://127.0.0.1:8000/api/puntos-limpios/modificar/${id}/`, {
+    fetch(`${API_URL}/api/puntos-limpios/modificar/${id}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

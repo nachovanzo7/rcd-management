@@ -40,9 +40,11 @@ const AltaCapacitaciones = () => {
   const navigate = useNavigate();
   const { token, role, user } = useContext(AuthContext);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   // Carga inicial de Obras
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/obras/aprobadas/", {
+    fetch(`${API_URL}/api/obras/aprobadas/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
@@ -60,7 +62,7 @@ const AltaCapacitaciones = () => {
 
   // Carga inicial de Técnicos
   useEffect(() => {
-    fetch("http://localhost:8000/api/tecnicos/lista/", {
+    fetch(`${API_URL}/api/tecnicos/lista/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
@@ -89,7 +91,7 @@ const AltaCapacitaciones = () => {
       setLoadingSupervisores(true);
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/api/supervisores/${formData.obra}/supervisores/`,
+          `${API_URL}/api/supervisores/${formData.obra}/supervisores/`,
           {
             signal: controller.signal,
             headers: {

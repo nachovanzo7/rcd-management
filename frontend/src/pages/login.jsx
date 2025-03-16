@@ -24,14 +24,16 @@ const LoginForm = () => {
   const [errorMessage, setErrorMessage] = useState(""); // Estado para el error
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage(""); // Limpiar error antes de hacer la solicitud
 
+    console.log("Datos a enviar:", { email, password });
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/usuarios/login/", {
+      const response = await fetch(`${API_URL}/api/usuarios/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

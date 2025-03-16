@@ -23,6 +23,8 @@ const DetallesPuntoLimpio = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError("ID de punto limpio no proporcionado.");
@@ -30,7 +32,7 @@ const DetallesPuntoLimpio = () => {
       return;
     }
 
-    fetch(`http://localhost:8000/api/puntolimpio/detalle/?id=${id}`, {
+    fetch(`${API_URL}/api/puntolimpio/detalle/?id=${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,

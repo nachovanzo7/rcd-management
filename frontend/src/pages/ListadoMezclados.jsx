@@ -16,10 +16,11 @@ const ListaMezclados = () => {
   const location = useLocation();
   const { role, token } = useContext(AuthContext);
   const successMessage = location.state?.successMessage || "";
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     // Endpoint para obtener todos los mezclados
-    const url = "http://127.0.0.1:8000/api/mezclados/lista/";
+    const url = `${API_URL}/api/mezclados/lista/`;
     fetch(url, {
       headers: {
         "Content-Type": "application/json",

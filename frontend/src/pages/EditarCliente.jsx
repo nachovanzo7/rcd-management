@@ -47,9 +47,11 @@ const EditarCliente = () => {
   // Se obtiene el token desde localStorage
   const token = sessionStorage.getItem('token');
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/api/clientes/${id}/`, {
+      fetch(`${API_URL}/api/clientes/${id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +159,7 @@ const EditarCliente = () => {
           : null,
       };
 
-      const response = await fetch(`http://localhost:8000/api/clientes/${id}/actualizar/`, {
+      const response = await fetch(`${API_URL}/api/clientes/${id}/actualizar/`, {
         method: 'PATCH',
         headers: {
           "Content-Type": "application/json",

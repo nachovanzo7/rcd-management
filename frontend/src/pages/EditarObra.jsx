@@ -84,10 +84,11 @@ const EditarObra = () => {
   // Obtener el token desde el contexto de autenticación
   const { token } = useContext(AuthContext);
 
-  // Cargar datos actuales de la obra para editar
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (id) {
-      fetch(`http://127.0.0.1:8000/api/obras/${id}/`, {
+      fetch(`${API_URL}/api/obras/${id}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -174,7 +175,7 @@ const EditarObra = () => {
     console.log("Enviando formulario:", obraData);
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/obras/${id}/actualizar/`, {
+      const response = await fetch(`${API_URL}/api/obras/${id}/actualizar/`, {
         method: "PATCH",
         headers: { 
           "Content-Type": "application/json",

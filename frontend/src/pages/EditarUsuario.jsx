@@ -41,9 +41,10 @@ const EditarUsuario = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [obrasList, setObrasList] = useState([]);
 
-  // Carga de datos del usuario (puedes ajustar si tienes redundancia entre id y email)
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/usuarios/${id}/`, {
+    fetch(`${API_URL}/api/usuarios/${id}/`, {
       headers: { Authorization: `Token ${token}` },
     })
       .then((res) => res.json())
@@ -53,7 +54,7 @@ const EditarUsuario = () => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://127.0.0.1:8000/api/usuarios/editar/${email}/`, {
+      fetch(`${API_URL}/api/usuarios/editar/${email}/`, {
         headers: { Authorization: `Token ${token}` },
       })
         .then((res) => res.json())
@@ -66,7 +67,7 @@ const EditarUsuario = () => {
   useEffect(() => {
     const fetchObras = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/obras/aprobadas/", {
+        const res = await fetch(`${API_URL}/api/obras/aprobadas/`, {
           headers: { Authorization: `Token ${token}` },
         });
         if (!res.ok) throw new Error("Error al cargar obras aprobadas");
@@ -96,7 +97,7 @@ const EditarUsuario = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/usuarios/${id}/`, {
+      const response = await fetch(`${API_URL}/api/usuarios/${id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

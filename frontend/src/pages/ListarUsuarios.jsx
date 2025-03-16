@@ -21,9 +21,10 @@ const ListarUsuarios = () => {
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/usuarios/listar/', {
+    fetch(`${API_URL}/api/usuarios/listar/`, {
       headers: { Authorization: `Token ${token}` },
     })
       .then(res => res.json())

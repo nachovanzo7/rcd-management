@@ -17,9 +17,12 @@
     // Extraemos el token desde el AuthContext
     const { token } = useContext(AuthContext);
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+
     useEffect(() => {
       if (!token) return; // Si no hay token, no se realiza la petición
-      fetch('http://localhost:8000/api/clientes/aprobados/', {
+      fetch(`${API_URL}/api/clientes/aprobados/`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Token ${token}`,
@@ -38,7 +41,7 @@
     const eliminarCliente = (id) => {
       const confirmacion = window.confirm("¿Seguro que deseas eliminar este cliente?");
       if (confirmacion) {
-        fetch(`http://127.0.0.1:8000/api/clientes/${id}/eliminar/`, {
+        fetch(`${API_URL}/api/clientes/${id}/eliminar/`, {
           method: 'DELETE',
           headers: { 
             'Content-Type': 'application/json',

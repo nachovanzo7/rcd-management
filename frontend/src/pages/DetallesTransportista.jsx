@@ -24,6 +24,8 @@ const DetallesTransportista = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError('ID de transportista no proporcionado.');
@@ -31,7 +33,7 @@ const DetallesTransportista = () => {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/transportistas/${id}/`, {
+    fetch(`${API_URL}/api/transportistas/${id}/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,

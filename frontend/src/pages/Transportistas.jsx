@@ -26,6 +26,7 @@ const Transportistas = () => {
 
   // Acceder al token desde el contexto
   const { token } = useContext(AuthContext);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     if (!token) {
@@ -34,7 +35,7 @@ const Transportistas = () => {
       return;
     }
   
-    fetch('http://localhost:8000/api/transportistas/lista/', {
+    fetch(`${API_URL}/api/transportistas/lista/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +59,7 @@ const Transportistas = () => {
     const transportista = transportistas.find((t) => t.id === id);
     const newEstado = transportista.estado === 'activo' ? 'inactivo' : 'activo';
 
-    fetch(`http://127.0.0.1:8000/api/transportistas/modificar/${id}/`, {
+    fetch(`${API_URL}/api/transportistas/modificar/${id}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

@@ -14,8 +14,10 @@ const DetallesCliente = () => {
   
   const { token } = useContext(AuthContext);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
-    fetch(`http://localhost:8000/api/clientes/${id}`, {
+    fetch(`${API_URL}/api/clientes/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Token ${token}`,

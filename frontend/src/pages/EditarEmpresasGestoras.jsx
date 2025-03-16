@@ -33,9 +33,11 @@ const EditarEmpresaGestora = () => {
   const id = queryParams.get("id");
   const { token } = useContext(AuthContext);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/api/empresas/${id}/`, {
+      fetch(`${API_URL}/api/empresas/${id}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -97,7 +99,7 @@ const EditarEmpresaGestora = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`http://localhost:8000/api/empresas/modificar/${id}/`, {
+      const response = await fetch(`${API_URL}/api/empresas/modificar/${id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

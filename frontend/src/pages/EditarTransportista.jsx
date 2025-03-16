@@ -30,10 +30,11 @@ const EditarTransportista = () => {
   // Obtenemos el token del contexto de autenticación
   const { token } = useContext(AuthContext);
 
-  // Cargar los datos actuales del transportista
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/api/transportistas/${id}/`, {
+      fetch(`${API_URL}/api/transportistas/${id}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -132,7 +133,7 @@ const EditarTransportista = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:8000/api/transportistas/${id}/actualizar/`, {
+      const response = await fetch(`${API_URL}/api/transportistas/${id}/actualizar/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

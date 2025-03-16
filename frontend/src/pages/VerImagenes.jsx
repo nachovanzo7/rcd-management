@@ -16,7 +16,7 @@ import {
 import { useLocation } from "react-router-dom";
 import dayjs from "dayjs";
 import { AuthContext } from "../pages/context/AuthContext";
-import { Download } from "lucide-react";  // Importa el ícono de descarga de Lucide
+import { Download } from "lucide-react";
 
 const VerImagenesObra = () => {
   const [imagenes, setImagenes] = useState([]);
@@ -42,12 +42,11 @@ const VerImagenesObra = () => {
       setLoading(false);
       return;
     }
-
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
     // Construir las URLs
-    const urlImagenes = `http://127.0.0.1:8000/api/fotos/obras/${obraId}/imagenes/`;
-    const urlObra = `http://127.0.0.1:8000/api/obras/${obraId}/`;
+    const urlImagenes = `${API_URL}/api/fotos/obras/${obraId}/imagenes/`;
+    const urlObra = `${API_URL}/api/obras/${obraId}/`;
 
-    // Obtener imágenes y luego información de la obra
     fetch(urlImagenes, {
       headers: {
         "Content-Type": "application/json",

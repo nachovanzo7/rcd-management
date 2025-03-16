@@ -58,10 +58,11 @@ const AltaPuntoLimpio = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Cargar las obras aprobadas
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!token) return;
-    fetch("http://127.0.0.1:8000/api/obras/aprobadas/", {
+    fetch(`${API_URL}/api/obras/aprobadas/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -83,7 +84,7 @@ const AltaPuntoLimpio = () => {
   // Cargar la lista de transportistas
   useEffect(() => {
     if (!token) return;
-    fetch("http://127.0.0.1:8000/api/transportistas/lista/", {
+    fetch(`${API_URL}/api/transportistas/lista/`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -215,7 +216,7 @@ const AltaPuntoLimpio = () => {
 
     try {
       const responsePunto = await fetch(
-        "http://127.0.0.1:8000/api/puntolimpio/registro/",
+        `${API_URL}/api/puntolimpio/registro/`,
         {
           method: "POST",
           headers: {
@@ -257,7 +258,7 @@ const AltaPuntoLimpio = () => {
 
       for (const material of materialesArray) {
         const responseMaterial = await fetch(
-          "http://127.0.0.1:8000/api/materiales/registro/",
+          `${API_URL}/api/materiales/registro/`,
           {
             method: "POST",
             headers: {

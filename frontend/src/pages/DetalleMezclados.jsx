@@ -31,13 +31,15 @@ const DetallesMezclado = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError("ID de mezclado no proporcionado.");
       setLoading(false);
       return;
     }
-    fetch(`http://127.0.0.1:8000/api/mezclados/detalle/?id=${id}`, {
+    fetch(`${API_URL}/api/mezclados/detalle/?id=${id}`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Token ${token}`,

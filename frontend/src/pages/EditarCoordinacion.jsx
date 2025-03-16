@@ -53,10 +53,11 @@ const EditarCoordinacion = () => {
   const [empresas, setEmpresas] = useState([]);
   const [transportistas, setTransportistas] = useState([]);
 
-  // Carga los datos de la coordinación a editar
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8000/api/coordinacionretiro/${id}/`, {
+      fetch(`${API_URL}/api/coordinacionretiro/${id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +90,7 @@ const EditarCoordinacion = () => {
 
   // Carga las listas para selects
   useEffect(() => {
-    fetch("http://localhost:8000/api/obras/aprobadas/", {
+    fetch(`${API_URL}/api/obras/aprobadas/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
@@ -99,7 +100,7 @@ const EditarCoordinacion = () => {
       .then((data) => setObras(data))
       .catch((err) => console.error("Error al obtener obras:", err));
 
-    fetch("http://localhost:8000/api/empresas/lista/", {
+    fetch(`${API_URL}/api/empresas/lista/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
@@ -109,7 +110,7 @@ const EditarCoordinacion = () => {
       .then((data) => setEmpresas(data))
       .catch((err) => console.error("Error al obtener empresas:", err));
 
-    fetch("http://localhost:8000/api/transportistas/lista/", {
+    fetch(`${API_URL}/api/transportistas/lista/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,
@@ -234,7 +235,7 @@ const EditarCoordinacion = () => {
       };
 
       const response = await fetch(
-        `http://localhost:8000/api/coordinacionretiro/${id}/actualizar/`,
+        `${API_URL}/api/coordinacionretiro/${id}/actualizar/`,
         {
           method: "PATCH",
           headers: {

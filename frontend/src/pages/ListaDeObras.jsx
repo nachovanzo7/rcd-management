@@ -43,10 +43,12 @@ const ListaDeObras = () => {
       .catch((err) => console.error("Error al obtener obras:", err));
   }, [role, token]);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   const eliminarObra = (id) => {
     const confirmacion = window.confirm("¿Seguro que deseas eliminar esta obra?");
     if (confirmacion) {
-      fetch(`http://127.0.0.1:8000/api/obras/${id}/eliminar/`, {
+      fetch(`${API_URL}/api/obras/${id}/eliminar/`, {
         method: 'DELETE',
         headers: { 
           'Content-Type': 'application/json',

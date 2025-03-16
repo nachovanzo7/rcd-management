@@ -17,10 +17,12 @@ const Capacitaciones = () => {
   const { token, role, user } = useContext(AuthContext); 
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!token) return; 
     
-    fetch('http://localhost:8000/api/capacitaciones/lista/', {
+    fetch(`${API_URL}/api/capacitaciones/lista/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ const Capacitaciones = () => {
   const eliminarCapacitacion = (id) => {
     const confirmacion = window.confirm("¿Seguro que deseas eliminar esta capacitación?");
     if (confirmacion) {
-      fetch(`http://localhost:8000/api/capacitaciones/${id}/eliminar/`, {
+      fetch(`${API_URL}/api/capacitaciones/${id}/eliminar/`, {
         method: 'DELETE',
         headers: { 
           'Content-Type': 'application/json',

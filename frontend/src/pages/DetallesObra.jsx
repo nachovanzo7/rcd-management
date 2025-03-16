@@ -32,6 +32,8 @@ const DetallesObra = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError("ID de obra no proporcionado.");
@@ -39,7 +41,7 @@ const DetallesObra = () => {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/obras/${id}/`, {
+    fetch(`${API_URL}/api/obras/${id}/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,

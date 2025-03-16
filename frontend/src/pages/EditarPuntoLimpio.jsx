@@ -42,10 +42,12 @@ const EditarPuntoLimpio = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const id = queryParams.get("id");
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
+  
   useEffect(() => {
     if (id) {
-      fetch(`http://127.0.0.1:8000/api/puntos-limpios/${id}/`)
+      fetch(`${API_URL}/api/puntos-limpios/${id}/`)
         .then((response) => response.json())
         .then((data) => {
           setFormData({
@@ -100,7 +102,7 @@ const EditarPuntoLimpio = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/puntos-limpios/${id}/actualizar/`, {
+      const response = await fetch(`${API_URL}/api/puntos-limpios/${id}/actualizar/`, {
         method: 'PATCH',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

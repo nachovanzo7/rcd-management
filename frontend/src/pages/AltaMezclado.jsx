@@ -32,10 +32,11 @@ const RegistrarMezclado = () => {
   const navigate = useNavigate();
   const { token } = useContext(AuthContext);
 
-  // Obtenemos las obras aprobadas para llenar el dropdown
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (token) {
-      fetch("http://127.0.0.1:8000/api/obras/aprobadas/", {
+      fetch(`${API_URL}/api/obras/aprobadas/`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Token ${token}`,
@@ -109,7 +110,7 @@ const RegistrarMezclado = () => {
         data.append("imagenes", file);
       });
 
-      const response = await fetch("http://127.0.0.1:8000/api/mezclados/registrar/", {
+      const response = await fetch(`${API_URL}/api/mezclados/registrar/`, {
         method: "POST",
         headers: {
           "Authorization": `Token ${token}`,

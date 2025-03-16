@@ -29,9 +29,12 @@ const AltaImagenes = () => {
   const queryParams = new URLSearchParams(location.search);
   const obraId = queryParams.get("obraId");
 
+
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (obraId && token) {
-      fetch(`http://127.0.0.1:8000/api/obras/${obraId}/`, {
+      fetch(`${API_URL}/api/obras/${obraId}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
@@ -109,7 +112,7 @@ const AltaImagenes = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/fotos/obras/${obraId}/agregar-imagenes/`,
+        `${API_URL}/api/fotos/obras/${obraId}/agregar-imagenes/`,
         {
           method: "PATCH",
           headers: {

@@ -67,11 +67,13 @@ const AltaUsuario = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Carga optimizada de obras
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+
   useEffect(() => {
     const fetchObras = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/obras/aprobadas/", {
+        const res = await fetch(`${API_URL}/api/obras/aprobadas/`, {
           headers: {
             Authorization: `Token ${token}`,
           },
@@ -105,7 +107,7 @@ const AltaUsuario = () => {
         rol: formData.rol === "coordinador_obra" ? "coordinador" : formData.rol
       };
 
-      const res = await fetch("http://127.0.0.1:8000/api/usuarios/crear/", {
+      const res = await fetch(`${API_URL}/api/usuarios/crear/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

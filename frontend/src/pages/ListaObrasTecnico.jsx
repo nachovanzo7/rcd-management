@@ -24,11 +24,12 @@ const ObrasList = () => {
   const { user, role, token } = useContext(AuthContext);
   // email se obtiene directamente de user?.email
   const email = user?.email;
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
   useEffect(() => {
     const authToken = sessionStorage.getItem('token');
 
-    fetch("http://localhost:8000/api/obras/aprobadas/", {
+    fetch(`${API_URL}/api/obras/aprobadas/`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Token ${authToken}`,

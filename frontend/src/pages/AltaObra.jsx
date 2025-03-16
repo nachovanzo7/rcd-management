@@ -75,10 +75,11 @@ const AltaObra = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Al cargar, obtenemos la lista de clientes aprobados y preseleccionamos:
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (token) {
-      fetch('http://127.0.0.1:8000/api/clientes/aprobados/', {
+      fetch(`${API_URL}/api/clientes/aprobados/`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Token ${token}`,
@@ -234,7 +235,7 @@ const AltaObra = () => {
       return;
     }
 
-    fetch('http://127.0.0.1:8000/api/obras/registro/', {
+    fetch(`${API_URL}/api/obras/registro/`, {
       method: 'POST',
       headers: {
         'Authorization': `Token ${tokenLocal}`,

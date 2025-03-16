@@ -135,9 +135,9 @@ const RegistroCliente = () => {
         : null,
     };
 
-    console.log("Enviando formulario:", clientData);
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
 
-    fetch("http://127.0.0.1:8000/api/clientes/registro/", {
+    fetch(`${API_URL}/api/clientes/registro/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

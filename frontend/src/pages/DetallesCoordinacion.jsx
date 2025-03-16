@@ -30,6 +30,8 @@ const DetallesCoordinacion = () => {
     },
   });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
   useEffect(() => {
     if (!id) {
       setError("ID de coordinación no proporcionado.");
@@ -37,7 +39,7 @@ const DetallesCoordinacion = () => {
       return;
     }
 
-    fetch(`http://127.0.0.1:8000/api/coordinacionretiro/${id}/`, {
+    fetch(`${API_URL}/api/coordinacionretiro/${id}/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Token ${token}`,

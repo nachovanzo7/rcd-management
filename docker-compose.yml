@@ -12,6 +12,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rcd_username -d gestion_rcd_database"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   backend:
     build:
@@ -19,32 +24,32 @@ services:
       dockerfile: Dockerfile
     container_name: django_backend
     command: >
-      sh -c "python manage.py migrate &&
+      sh -c "until pg_isready -h $DB_HOST -U $POSTGRES_USER -d $POSTGRES_DB; do echo 'Waiting for postgres...'; sleep 2; done &&
+             python manage.py migrate &&
              gunicorn rcdproject.rcdproject.wsgi:application --bind 0.0.0.0:8080"
-    volumes:
-      - ./backend:/app
     ports:
-      - "8000:8080"  # Mapea el puerto 8080 del contenedor al 8000 de tu host
+      - "8000:8080"
     environment:
       - DEBUG=False
-      - SECRET_KEY=django-insecure-d&@!3$$x18jknwgos(acz6+&2_)-*+wsv85(j)e&fg&l)czvg8v
+      - SECRET_KEY=fYh24CZCi4hgKuVPpRdxIiCVVAooAtla8LbyZmZT7Dnu3px6sZWyXAOfiM1JzN-Kw8U
       - POSTGRES_DB=gestion_rcd_database
       - POSTGRES_USER=rcd_username
       - POSTGRES_PASSWORD=rcd_gestion
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
+      - DB_HOST=db
+      - ALLOWED_HOSTS=django-backend-423289316713.southamerica-east1.run.app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: react_frontend
-    volumes:
-      - ./frontend:/app
     ports:
-      - "3000:8080"  # Mapea el puerto 8080 del contenedor al 3000 de tu host
+      - "3000:8080"
 
 volumes:
   postgres_data:
